@@ -2,58 +2,45 @@
 //
 
 #include <iostream>
-#include <algorithm>
+#include <string>
 
 using namespace std;
 
 int main()
 {
-    int x = 1;
+    int indiceFinal;
+    char frase[50];
+    string fraseS;
+    bool esPalindromo = true;
 
-    while (x != 0) {
+    cout << "Ingrese la cadena que desea evaluar: " << endl;
 
-        string x = " ";
-        bool esPalindromo = false;
+    cin.getline(frase, 50, '\n');
 
-        cout << "Detector de Palindromos" << endl;
+    fraseS = frase;
+    fraseS.erase(remove(fraseS.begin(), fraseS.end(), ' '), fraseS.end());
+    
 
-        cout << "\nIngrese una palabra para comprobar si es palindrmo" << endl;
+    indiceFinal = fraseS.length() - 1;
 
-        cin >> x;
+    for (int i = 0; i < fraseS.length() / 2; i++)
+    {
+       
+        if (fraseS[i] != fraseS[indiceFinal])
+        {
+            esPalindromo = false;
 
-        for (int i = 0; i < x.length()/2; i++) {
-
-            for (int j = x.length() - 1; j >= 0; j--) {
-
-                if (x[i] == x[j]) {
-
-                    esPalindromo = true;
-
-                }
-
-                else {
-
-                    esPalindromo = false;
-
-                }
-            }
+            break;
         }
-        if (esPalindromo = true) {
-
-            cout << "La palabra " << x << " es Palindroma";
-
-        }
-        else {
-
-            cout << "La palabra " << x << " no es Palindroma";
-
-        }
-
-        cout << "\n\nPara continuar el programa inserte un valor distinto de 0: ";
-
-        cin >> x;
+        indiceFinal--;
     }
-    return 0;
+    if (esPalindromo)
+
+        cout << "Es palindromo" << endl;
+
+    else
+
+        cout << "No es palindromo" << endl;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
